@@ -1,13 +1,13 @@
 import * as React from "react";
 import Button from "@mui/joy/Button";
 import Snackbar from "@mui/joy/Snackbar";
-import { setSnackBarVisibility } from "../page";
 
 export default function SnackbarWithDecorators({
   StartDecorator,
   color,
   snackBarMessage,
   open,
+  setSnackBarVisibility,
 }) {
   return (
     <>

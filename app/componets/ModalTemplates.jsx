@@ -18,7 +18,6 @@ import {
 } from "firebase/storage"; // Import Firebase storage methods
 import { auth, db, storage } from "../../firebase"; // Import Firebase configuration
 import firestore from "../../firebase";
-import { setSnackBarData, setSnackBarVisibility } from "../page";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
@@ -140,6 +139,8 @@ export function DisplayImageDetectionModal({
   textTittle,
   tooltipTitle = "",
   CustomButton,
+  setSnackBarVisibility,
+  setSnackBarData,
 }) {
   const style = {
     position: "absolute",
@@ -256,7 +257,8 @@ export function DisplayImageDetectionModal({
   return (
     <>
       <Tooltip title={tooltipTitle}>
-        <CustomButton sx={{
+        <CustomButton
+          sx={{
             color: "#1976d2",
             ":hover": { backgroundColor: "#1976d2", color: "#fff" },
             fontSize: "1.1rem",

@@ -1,7 +1,10 @@
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
-import { setSnackBarData, setSnackBarVisibility } from "../page";
 
-export default async function FetchProductInfo(eanCode) {
+export default async function FetchProductInfo(
+  eanCode,
+  setSnackBarData,
+  setSnackBarVisibility
+) {
   try {
     const response = await fetch(
       `https://world.openfoodfacts.org/api/v0/product/${eanCode}.json`

@@ -37,14 +37,22 @@ import AddItemModal, {
 } from "../ModalTemplates";
 import columns from "../columns";
 import SearchIcon from "@mui/icons-material/Search";
-import { setSnackBarData, setSnackBarVisibility } from "../../page";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 import Image from "next/image.js";
 import nyanCat from "./nyancat.gif";
 import RecipeIcon from "./RecipeIcon.jsx";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
-export default function InventoryGrid() {
+let setSnackBarVisibility, setSnackBarData;
+export default function InitMain({
+  setSnackBarVisibilityGlobal,
+  setSnackBarDataGlobal,
+}) {
+  setSnackBarData = setSnackBarDataGlobal;
+  setSnackBarVisibility = setSnackBarVisibilityGlobal;
+  return <InventoryGrid />;
+}
+export function InventoryGrid() {
   const [inventory, setInventory] = useState([]);
   const [itemData, setItemData] = useState({
     id: null,
@@ -236,6 +244,8 @@ export default function InventoryGrid() {
             textTittle={"Camera:"}
             tooltipTitle="Use Camera To Add an Item!"
             CustomButton={IconButton}
+            setSnackBarVisibility={setSnackBarVisibility}
+            setSnackBarData={setSnackBarData}
           />
         </Typography>
       </Box>
@@ -425,7 +435,11 @@ function AddItemModalTextFields({ itemData, setItemData, updateItem, lastID }) {
               sx={{ ml: 1, ":hover": { cursor: "pointer" } }}
               onClick={() => {
                 if (itemData.eanCode) {
-                  FetchProductInfo(itemData.eanCode).then((fetchedData) =>
+                  FetchProductInfo(
+                    itemData.eanCode,
+                    setSnackBarData,
+                    setSnackBarVisibility
+                  ).then((fetchedData) =>
                     setItemData({ ...itemData, ...fetchedData })
                   );
                 }
