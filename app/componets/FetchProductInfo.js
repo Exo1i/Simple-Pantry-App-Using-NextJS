@@ -19,7 +19,6 @@ export default async function FetchProductInfo(
     const importantData = {
       productName: data.product.product_name || "N/A",
       brand: data.product.brands || "N/A",
-      ingredients: data.product.ingredients_text || "N/A",
       nutritionFacts: data.product.nutriments || "N/A",
     };
 

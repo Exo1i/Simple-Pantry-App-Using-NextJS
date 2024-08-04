@@ -58,7 +58,6 @@ export function InventoryGrid() {
     id: null,
     eanCode: "",
     productName: "",
-    ingredients: "",
     nutriments: "",
     brand: "",
     quantity: 1,
@@ -144,7 +143,6 @@ export function InventoryGrid() {
           eanCode: item.eanCode,
           productName: item.productName,
           nutriments: item.nutriments,
-          ingredients: item.ingredients,
           brand: item.brand,
         }).then(() => {
           setSnackBarVisibility(true);
@@ -164,7 +162,6 @@ export function InventoryGrid() {
       id: null,
       eanCode: "",
       productName: "",
-      ingredients: "",
       nutriments: "",
       brand: "",
       quantity: 1,
@@ -451,16 +448,6 @@ function AddItemModalTextFields({ itemData, setItemData, updateItem, lastID }) {
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <TextField
-            name="ingredients"
-            label="Ingredients"
-            variant="outlined"
-            fullWidth
-            value={itemData.ingredients}
-            onChange={handleInputChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextField
             name="nutriments"
             label="Nutrition Facts"
             variant="outlined"
@@ -585,16 +572,7 @@ function EditItemModalTextFields({ initialItemData, updateItem, handleClose }) {
         </Grid>
       </Grid>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
-          <TextField
-            name="ingredients"
-            label="Ingredients"
-            variant="outlined"
-            fullWidth
-            value={localItemData.ingredients}
-            onChange={handleInputChange}
-          />
-        </Grid>
+
         <Grid item xs={12} md={4}>
           <TextField
             name="nutriments"
